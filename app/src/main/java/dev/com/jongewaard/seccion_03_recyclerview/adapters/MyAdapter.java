@@ -1,4 +1,4 @@
-package dev.com.jongewaard.seccion_03_recyclerview;
+package dev.com.jongewaard.seccion_03_recyclerview.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import dev.com.jongewaard.seccion_03_recyclerview.R;
+import dev.com.jongewaard.seccion_03_recyclerview.models.Movie;
 
 /**
  * Created by german on 20-11-17.
@@ -70,17 +73,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         }
 
-        public void bind(final Movie movies, final OnItemClickListener listener) {
+        public void bind(final Movie movie, final OnItemClickListener listener) {
             // Procesamos los datos a renderizar (aquí lo procesamos, los relleno con nuestros valores!)
-            textViewName.setText(movies.getName());
+            textViewName.setText(movie.getName());
 
             //Libreria Picasso                     con fit() extiendo la imagen en to do el cuadrado
             //                 con into() es donde vamos a cargarla, seria, dentro del "imageViewPoster"
-            Picasso.with(context).load(movies.getPoster()).fit().into(imageViewPoster);
+            Picasso.with(context).load(movie.getPoster()).fit().into(imageViewPoster);
 
-
-
-            imageViewPoster.setImageResource(movies.getPoster());
+            imageViewPoster.setImageResource(movie.getPoster());
 
             // Definimos que por cada elemento de nuestro recycler view, tenemos un click listener
             // que se comporta de la siguiente manera...
@@ -88,7 +89,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     // ... pasamos nuestro objeto modelo (este caso String) y posición
-                    listener.onItemClick(movies, getAdapterPosition());
+                    listener.onItemClick(movie, getAdapterPosition());
+
                 }
             });
         }

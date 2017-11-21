@@ -1,17 +1,19 @@
-package dev.com.jongewaard.seccion_03_recyclerview;
+package dev.com.jongewaard.seccion_03_recyclerview.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import dev.com.jongewaard.seccion_03_recyclerview.adapters.MyAdapter;
+import dev.com.jongewaard.seccion_03_recyclerview.R;
+import dev.com.jongewaard.seccion_03_recyclerview.models.Movie;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.add_name:
                 this.addMovie(0);
                 return true;
@@ -81,15 +83,14 @@ public class MainActivity extends AppCompatActivity {
         return new ArrayList<Movie>(){{
             add(new Movie("Ben Hur", R.drawable.benhur));
             add(new Movie("DeadPool", R.drawable.deadpool));
-            add(new Movie("Guardians of Galaxy", R.drawable.guardians));
+            add(new Movie("Guardians of the Galaxy", R.drawable.guardians));
             add(new Movie("Warcraft", R.drawable.warcraft));
 
         }};
     }
 
     private void addMovie(int position) {
-
-        movies.add(position, new Movie("New image " +  + (++counter), R.drawable.newmovie));
+        movies.add(position, new Movie("New image " + (++counter), R.drawable.newmovie));
         // Notificamos de un nuevo item insertado en nuestra colección
         mAdapter.notifyItemInserted(position);
         // Hacemos scroll hacia lo posición donde el nuevo elemento se aloja

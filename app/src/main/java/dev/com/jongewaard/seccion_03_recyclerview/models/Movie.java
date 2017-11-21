@@ -1,4 +1,4 @@
-package dev.com.jongewaard.seccion_03_recyclerview;
+package dev.com.jongewaard.seccion_03_recyclerview.models;
 
 /**
  * Created by german on 20-11-17.
