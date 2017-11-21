@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
         // definimos en el adaptador, y recibiendo los parámetros que necesitamos
         mAdapter = new MyAdapter(movies, R.layout.recycler_view_item, new MyAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(String name, int position) {
+            public void onItemClick(Movie movies, int position) {
                 //Toast.makeText(MainActivity.this, name + " - " + position, Toast.LENGTH_LONG).show();
-              //  deleteMovie(position);
+               deleteMovie(position);
             }
         });
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.add_name:
-              //  this.addMovie(0);
+                this.addMovie(0);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -87,9 +87,9 @@ public class MainActivity extends AppCompatActivity {
         }};
     }
 
-   /* private void addMovie(int position) {
+    private void addMovie(int position) {
 
-        movies.add(position, "New movie " + (++counter));
+        movies.add(position, new Movie("New image " +  + (++counter), R.drawable.newmovie));
         // Notificamos de un nuevo item insertado en nuestra colección
         mAdapter.notifyItemInserted(position);
         // Hacemos scroll hacia lo posición donde el nuevo elemento se aloja
@@ -101,5 +101,5 @@ public class MainActivity extends AppCompatActivity {
         movies.remove(position);
         // Notificamos de un item borrado en nuestra colección
         mAdapter.notifyItemRemoved(position);
-    }*/
+    }
 }
