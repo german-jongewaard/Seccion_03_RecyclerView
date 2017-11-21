@@ -80,8 +80,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             //Libreria Picasso                     con fit() extiendo la imagen en to do el cuadrado
             //                 con into() es donde vamos a cargarla, seria, dentro del "imageViewPoster"
             Picasso.with(context).load(movie.getPoster()).fit().into(imageViewPoster);
-
-            imageViewPoster.setImageResource(movie.getPoster());
+            //imageViewPoster.setImageResource(movie.getPoster()); 
 
             // Definimos que por cada elemento de nuestro recycler view, tenemos un click listener
             // que se comporta de la siguiente manera...
